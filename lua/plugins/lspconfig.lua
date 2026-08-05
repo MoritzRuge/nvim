@@ -22,9 +22,25 @@ return {
 		capabilities = capabilities,
 		cmd = { "tinymist" },
 		filetypes = { "typst" },
-		root_dir = vim.fs.root(0, { ".git" }),
+		root_dir = vim.fs.root(0, { ".git" }) or vim.fn.getcwd(),
+		settings = {
+		    exportPdf =  "onSave",
+		},
 	    })
 	    vim.lsp.enable("tinymist")
-	end,
+
+	    vim.api.nvim_create_user_command("OpenPdf", function()
+	    local filepath = vim.api.nvim_buf_get_name(0)
+	    if filepath:match("%.typ$") then
+		local pdf_path = filepath:gsub("%.typ$", ".pdf")
+		-- erst compilieren
+		vim.system({ "typst", "compile", filepath })
+		-- dann öffnen
+		vim.system({ "zathura", pdf_path })
+	    else
+		print("not a typst files")
+	    end
+	end, {})
+    end,
     },
 }
