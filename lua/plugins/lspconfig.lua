@@ -1,3 +1,9 @@
+--[[
+--some helpfule links: commands in neovim
+--:help lsp for general information
+--:help ins-completion for neovim autocompletion or something
+--:help lspconfig for this config plugin, get lsp names and lsp.config{} settings form here
+--]]
 return {
     {
 	"neovim/nvim-lspconfig",
