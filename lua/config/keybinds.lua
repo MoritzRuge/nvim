@@ -3,6 +3,8 @@ local map = vim.keymap.set
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
+vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 20
 
 -- Typst keybinds
 vim.api.nvim_create_autocmd("FileType", {
