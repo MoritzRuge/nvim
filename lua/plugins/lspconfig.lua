@@ -1,8 +1,9 @@
 --[[
---some helpfule links: commands in neovim
---:help lsp for general information
---:help ins-completion for neovim autocompletion or something
---:help lspconfig for this config plugin, get lsp names and lsp.config{} settings form here
+--	further reading:
+--	:help lsp help file for lsp in general
+--	:help lspconfig help file, for this plugin
+--	:help ins-completion for neovim autocompletion or something
+--		- lsp.config{}, lsp names all in here
 --]]
 return {
     {
@@ -35,6 +36,8 @@ return {
 	    })
 	    vim.lsp.enable("tinymist")
 
+	    -- created with AI...idk if it works or if it does something
+	    -- BAD
 	    vim.api.nvim_create_user_command("OpenPdf", function()
 	    local filepath = vim.api.nvim_buf_get_name(0)
 	    if filepath:match("%.typ$") then
